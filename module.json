@@ -1,0 +1,13 @@
+{
+    "name": "Saller",
+    "alias": "saller",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Saller\\Providers\\SallerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
