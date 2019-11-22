@@ -15,6 +15,7 @@ class SallerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerViews();
+                $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -49,6 +50,18 @@ class SallerServiceProvider extends ServiceProvider
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/saller';
         }, \Config::get('view.paths')), [$sourcePath]), 'saller');
+    }
+
+        /**
+     * Register an additional directory of factories.
+     *
+     * @return void
+     */
+    public function registerFactories()
+    {
+        if (! app()->environment('production') && $this->app->runningInConsole()) {
+            app(Factory::class)->load(__DIR__ . '/../Database/factories');
+        }
     }
 
 
