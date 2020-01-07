@@ -1,6 +1,7 @@
 <tr>
 	<td class="align-middle">{{ $saller->name }}</td>
 	<td class="align-middle">{{ $saller->email }}</td>
+	<td class="align-middle">@currency($saller->goal)</td>
 	<td class="text-right align-middle">
 		<div class="btn-group" role="group" aria-label="Basic example">
 			<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#sallers_view_{{ $saller->id }}"><i class="fa fa-eye"></i></button>

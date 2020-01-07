@@ -47,5 +47,11 @@ class SallerController extends Controller
         return back()->with('success', 'Representante deletado.');
     }
 
+        public function import(Request $request)
+    {
+        return view('saller::import');
+    }
+
 
 }
+ 

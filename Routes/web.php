@@ -15,6 +15,7 @@ Route::prefix('sallers')->middleware('auth')->group(function() {
 	Route::get('', 'SallerController@index')->name('sallers.index');
 	Route::get('create', 'SallerController@create')->name('sallers.create');
 	Route::get('{saller}/edit', 'SallerController@edit')->name('sallers.edit');
+	Route::get('import', 'SallerController@import')->name('sallers.import');
 
 	Route::post('', 'SallerController@store')->name('sallers.store');
 	Route::put('{saller}', 'SallerController@update')->name('sallers.update');

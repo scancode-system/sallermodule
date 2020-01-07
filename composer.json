@@ -1,5 +1,5 @@
 {
-    "name": "nwidart/saller",
+    "name": "scancode-system/saller-module",
     "description": "",
     "authors": [
         {
@@ -21,5 +21,6 @@
         "psr-4": {
             "Modules\\Saller\\": ""
         }
-    }
+    },
+    "type": "laravel-module"
 }

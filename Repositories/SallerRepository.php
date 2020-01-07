@@ -7,6 +7,11 @@ use Modules\Saller\Entities\Saller;
 class SallerRepository
 {
 
+	// LOAD
+	public static function loadByUniqueKeys($id, $name, $email)
+	{
+		return Saller::where('id', $id)->orWhere('name', $name)->orWhere('email', $email)->first();
+	}
 
 	public static function list($search = '', $limit = 10){
 		$saller =  Saller::where('name', 'like', '%'.$search.'%')->paginate($limit);
@@ -16,7 +21,7 @@ class SallerRepository
 
 
 	public static function store($data){
-		Saller::create($data);
+		return Saller::create($data);
 	}
 
 
@@ -27,6 +32,7 @@ class SallerRepository
 			} 
 		}
 		$saller->update($data);
+		return $saller;
 	}
 
 

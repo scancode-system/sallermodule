@@ -14,7 +14,7 @@ class Saller extends Authenticatable
 
 
 	protected $fillable = [
-		'name', 'email', 'password',
+		'name', 'email', 'password', 'goal'
 	];
 
 	protected $hidden = [

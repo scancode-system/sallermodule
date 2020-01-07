@@ -14,6 +14,10 @@
 	{{ Form::text('email', old('email'), ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
+	{{ Form::label('goal', 'Meta') }}
+	{{ Form::number('goal', old('price'), ['class' => 'form-control', 'step' => '0.01']) }}
+</div>
+<div class="form-group">
 	{{ Form::label('password', 'Senha') }}
 	{{ Form::password('password', ['class' => 'form-control']) }}
 </div>

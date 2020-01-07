@@ -2,13 +2,14 @@
 
 namespace Modules\Saller\Services;
 
-use Illuminate\Support\Facades\Storage;
+use Modules\Saller\Imports\SallersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ImportService {
 
-    public function import()
-    {
-
-    }
+	public function import($path)
+	{
+		Excel::import(new SallersImport, $path);
+	}
 
 }
