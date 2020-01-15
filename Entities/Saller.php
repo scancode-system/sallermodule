@@ -4,11 +4,12 @@ namespace Modules\Saller\Entities;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Rocky\Eloquent\HasDynamicRelation;
 
 class Saller extends Authenticatable
 {
 
-	use Notifiable;
+	use Notifiable, HasDynamicRelation;
 
 	protected $dateFormat = 'Y-m-d H:i:s';
 
