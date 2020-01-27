@@ -50,6 +50,7 @@ class SallersImport implements OnEachRow, WithHeadingRow, WithEvents
 
 		public static function beforeImport(BeforeImport $event)
 	{
+				SessionService::title('Saller', 'import', 'Representantes'); 
 		$cells = $event->getDelegate()->getActiveSheet()->toArray();
 		$import = $event->getConcernable();
 		$import->data($cells);
