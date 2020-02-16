@@ -8,6 +8,11 @@ class SallerRepository
 {
 
 	// LOAD
+	public static function load()
+	{
+		return Saller::all();
+	}
+
 	public static function loadByUniqueKeys($id, $name, $email)
 	{
 		return Saller::where('id', $id)->orWhere('name', $name)->orWhere('email', $email)->first();
@@ -39,9 +44,9 @@ class SallerRepository
 	public static function destroy(Saller $saller){
 		$saller->delete();
 	}
- 
 
- 	public static function toSelect($value, $description){
+
+	public static function toSelect($value, $description){
 		return Saller::pluck($description, $value);
 	}
 
