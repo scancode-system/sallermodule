@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace Modules\Saller\Providers;
 
@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Factory;
 class SallerServiceProvider extends ServiceProvider
 {
     /**
+     * @var string $moduleName
+     */
+    protected $moduleName = 'Saller';
+
+    /**
+     * @var string $moduleNameLower
+     */
+    protected $moduleNameLower = 'saller';
+    /**
      * Boot the application events.
      *
      * @return void
@@ -15,7 +24,7 @@ class SallerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerViews();
-                $this->registerFactories();
+        $this->registerFactories();
         $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
     }
 
@@ -40,7 +49,17 @@ class SallerServiceProvider extends ServiceProvider
      */
     public function registerViews()
     {
-        $viewPath = resource_path('views/modules/saller');
+        $viewPath = resource_path('views/modules/' . $this->moduleNameLower);
+
+        $sourcePath = module_path($this->moduleName, 'Resources/views');
+
+        $this->publishes([
+            $sourcePath => $viewPath
+        ], ['views', $this->moduleNameLower . '-module-views']);
+
+        $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+
+        /*$viewPath = resource_path('views/modules/saller');
 
         $sourcePath = __DIR__.'/../Resources/views';
 
@@ -50,7 +69,7 @@ class SallerServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
             return $path . '/modules/saller';
-        }, \Config::get('view.paths')), [$sourcePath]), 'saller');
+        }, \Config::get('view.paths')), [$sourcePath]), 'saller');*/
     }
 
         /**
@@ -58,11 +77,15 @@ class SallerServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function registerFactories()
-    {
-        if (! app()->environment('production') && $this->app->runningInConsole()) {
+        public function registerFactories()
+        {
+            if (! app()->environment('production') && $this->app->runningInConsole()) {
+                app(Factory::class)->load(module_path($this->moduleName, 'Database/factories'));
+            }
+
+        /*if (! app()->environment('production') && $this->app->runningInConsole()) {
             app(Factory::class)->load(__DIR__ . '/../Database/factories');
-        }
+        }*/
     }
 
 
@@ -74,5 +97,16 @@ class SallerServiceProvider extends ServiceProvider
     public function provides()
     {
         return [];
+    }
+
+    private function getPublishableViewPaths(): array
+    {
+        $paths = [];
+        foreach (\Config::get('view.paths') as $path) {
+            if (is_dir($path . '/modules/' . $this->moduleNameLower)) {
+                $paths[] = $path . '/modules/' . $this->moduleNameLower;
+            }
+        }
+        return $paths;
     }
 }

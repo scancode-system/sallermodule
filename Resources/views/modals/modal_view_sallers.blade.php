@@ -1,4 +1,4 @@
-@modal_view(['modal_id' => 'sallers_view_'.$saller->id, 'edit_route' => 'sallers.edit', 'model_id' => $saller])
+<x-modal_view :modal-id="'sallers_view_'.$saller->id" edit-route="sallers.edit" :model_id="$saller">
 
 @slot('title')
 Representante #{{ $saller->id }}
@@ -17,4 +17,4 @@ Representante #{{ $saller->id }}
 	<div class="col-md-4">@currency($saller->goal)</div>
 </div>
 
-@endmodal_view
+</x-modal_view>
