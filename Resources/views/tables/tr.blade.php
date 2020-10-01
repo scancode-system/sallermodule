@@ -1,5 +1,6 @@
 <tr>
 	<td class="align-middle">{{ $saller->name }}</td>
+	<td class="align-middle">{{ $saller->login }}</td>
 	<td class="align-middle">{{ $saller->email }}</td>
 	<td class="align-middle">@currency($saller->goal)</td>
 	<td class="text-right align-middle">

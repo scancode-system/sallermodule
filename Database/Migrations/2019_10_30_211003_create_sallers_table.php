@@ -15,7 +15,8 @@ class CreateSallersTable extends Migration
     {
         Schema::create('sallers', function (Blueprint $table) {
            $table->bigIncrements('id');
-           $table->string('name')->unique();
+           $table->string('name');
+           $table->string('login')->unique();
            $table->string('email')->unique()->nullable();
            $table->decimal('goal', 10, 2)->default(0);
            $table->timestamp('email_verified_at')->nullable();

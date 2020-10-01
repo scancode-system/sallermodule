@@ -10,6 +10,10 @@
 	{{ Form::text('name', old('name'), ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
+	{{ Form::label('login', 'Login') }}
+	{{ Form::text('login', old('login'), ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
 	{{ Form::label('email', 'Email') }}
 	{{ Form::text('email', old('email'), ['class' => 'form-control']) }}
 </div>

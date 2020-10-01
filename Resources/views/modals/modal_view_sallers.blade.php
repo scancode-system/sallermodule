@@ -9,6 +9,10 @@ Representante #{{ $saller->id }}
 	<div class="col-md-4">{{ $saller->name }}</div>
 </div>
 <div class="row justify-content-center mb-1">
+	<div class="col-md-4"><strong>Login: </strong></div>
+	<div class="col-md-4">{{ $saller->login }}</div>
+</div>
+<div class="row justify-content-center mb-1">
 	<div class="col-md-4"><strong>Email: </strong></div>
 	<div class="col-md-4">{{ $saller->email }}</div>
 </div>
